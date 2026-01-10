@@ -1,11 +1,13 @@
 ## Table of Contents
 1. [Lab Infrastructure](#1-lab-infrastructure)
-2. [Attack Simulation](#2-attack-simulation-multi-protocol-brute-force)
-3. [Analysis and Technical Evidence]
-4. [Containment & Response](#4-containment-wazuh-driven-isolation)
-5. [Threat Hunting: Persistence Discovery](#5-investigation--threat-hunting-did-the-attacker-create-a-new-account)
-6. [Eradication & Recovery](#7-eradication-remove-persistence-and-close-the-compromise)
-7. [Incident Report Summary](#incident-report--brute-force-attack-hydra--ssh--rdp-wazuh)
+2. [Attack Simulation](#2-attack-simulation)
+3. [Analysis and Technical Evidence](#3-analysis-and-technical-evidence)
+4. [Containment: Wazuh-Driven Isolation](#4-containment-wazuh-driven-isolation)
+5. [Investigation & Threat Hunting](#5-investigation--threat-hunting)
+6. [Eradication](#6-eradication)
+7. [Recovery](#7-recovery)
+8. [Lessons Learned](#8-lessons-learned)
+9. [INCIDENT REPORT](#9-incident-report)
 
 # This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 

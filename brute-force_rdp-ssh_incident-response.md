@@ -98,3 +98,18 @@ Wazuh value: correlation reduces noise and provides a clear incident narrative f
 
 
 
+
+INCIDENT REPORT – Brute Force Attack (Hydra) – SSH + RDP (Wazuh)
+1. Incident Overview
+Incident name: Multi-Protocol Brute Force with Successful Authentication (SSH + RDP)
+Severity: Critical (successful login confirmed)
+Detection platform: Wazuh SIEM/XDR (agents + correlation)
+Date: 2026-01-10
+Impacted assets:
+Windows endpoint: WIN-VVRDFQU4TPN (agent.ip: 192.168.101.20)
+Linux endpoint: wazuh-agent-1 (192.168.101.11, SSH/Nginx)
+Attacker IOC (source IP): 192.168.101.10 (confirmed via Wazuh field data.win.eventdata.ipAddress)
+Compromised accounts: Administrator (Windows), soc (Linux)
+Initial access method: Dictionary brute force via Hydra
+Status: Contained → Eradicated → Recovered → Closed
+

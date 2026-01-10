@@ -33,9 +33,9 @@ After the attack, I analyzed the telemetry from three different perspectives to 
 ### A. Wazuh SIEM Dashboard
 The SIEM captured the progression from failed attempts (Level 5) to an active brute force detection (Level 10) and finally to a critical alert (Level 12).
 
-### WINDOWS: Wazuh used command for filter logs -> rule.id:(60122 OR 60204 OR 100001)
+### WINDOWS: Wazuh used command for filter logs -> rule.id:(60122 OR 60204 OR 100001)<br>
 <img width="1917" height="641" alt="Hydra Windows Logi" src="https://github.com/user-attachments/assets/7c293b45-414c-4968-aaae-2db4c3664ab3" />
-### LINUX -> Wazuh used command for filter logs -> rule.id:(5760 OR 2502 OR 40112)
+### LINUX -> Wazuh used command for filter logs -> rule.id:(5760 OR 2502 OR 40112)<br>
 <img width="1909" height="503" alt="Hydra Linux Logi" src="https://github.com/user-attachments/assets/8ee61316-3d55-4217-af96-0db7778e6ff0" />
 
 ### B. Windows Event Logs - Endpoint Side

@@ -69,15 +69,19 @@ I confirmed the creation of a secondary account on the Ubuntu endpoint using /va
 After confirming detection capability and validating the monitoring pipeline, the response moved to eradication.
 
 Windows:
-Removed the simulated persistence account (temp_svc).
+Removed the simulated persistence account -> net user ir_backdoor /delete
 Verified removal by confirming absence of the user and searching for relevant Security events:
 4726 (user account deleted) may appear depending on auditing configuration.
-ZDJECIE Z DOWODU USUNIECIA LOG
+<img width="1004" height="712" alt="Windows dowod usuniecia konta" src="https://github.com/user-attachments/assets/591ae7b5-638a-401c-b4d5-787fc999241f" />
+
 
 Linux:
-Removed the simulated user (backup_ops) and cleaned any related artifacts:
+Removed the simulated user (backup_ops) and cleaned any related artifacts: > sudo deluser --remove-home ir_backdoor
 home directory, ssh keys, cron jobs if any were created.
-ZDJECIE Z USUNIECIA LOG
+<img width="1299" height="115" alt="LINUX - USUNIECIE KONTA DOWOD" src="https://github.com/user-attachments/assets/ad9279b6-897b-4b4c-b50f-0f032cce35e5" />
+
+
+
 RECOMMENDATION
 
 7. Recovery: Return Services to Normal Operation

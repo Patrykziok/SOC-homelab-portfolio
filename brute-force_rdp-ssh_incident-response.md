@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a140c99e-57f9-4171-a766-8ba1afa17650" />1. Lab Infrastructure
+1. Lab Infrastructure
 This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 
 Wazuh Manager: Hosted on an Ubuntu Server, acting as the central brain for log collection, correlation, and alerting.

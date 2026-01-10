@@ -50,7 +50,7 @@ On the Ubuntu server, I examined the /var/log/auth.log file to trace the SSH att
 Command used > sudo journalctl -u ssh -n 50 --no-pager<br>
 <img width="1287" height="815" alt="log auth Linux" src="https://github.com/user-attachments/assets/b44b70b9-4afb-46bd-837b-d873b0b1d553" />
 
-Evidence: The log shows hundreds of Failed password messages from the attacker's IP, followed by an Accepted password entry for the user soc.
+Evidence: The logs show a series of failed login attempts, followed by a successful login for the user 'soc
 
 ## 4. Containment: Wazuh-Driven Isolation
 After confirming a successful authentication on both endpoints (Windows 4624 after 4625, Linux Accepted password after Failed password), the incident response process moved from detection to containment. The primary objective was to immediately prevent repeated access attempts and stop any potential post-compromise actions.

@@ -1,4 +1,4 @@
-1. Lab Infrastructure
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a140c99e-57f9-4171-a766-8ba1afa17650" />1. Lab Infrastructure
 This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 
 Wazuh Manager: Hosted on an Ubuntu Server, acting as the central brain for log collection, correlation, and alerting.
@@ -57,10 +57,15 @@ The affected accounts (Administrator, soc) were temporarily restricted (disable/
 
 5. Investigation & Threat Hunting: Did the Attacker Create a New Account?
 After containment, I performed a targeted investigation to determine whether the attacker established persistence — specifically, whether a secondary account was created (a common post-compromise step).
+Windows persistence evidence: Windows Security auditing recorded Event ID 4720 (User Account Management) at 2026-01-10 22:26:35, confirming creation of a new local user account ir_backdoor on host WIN-VVRDFQU4TPN. The action was performed under the Administrator context.
+<img width="1019" height="771" alt="Windows konto zrobione log" src="https://github.com/user-attachments/assets/7031676c-fe9d-4b98-babb-4fe4a9fc5207" />
 
-Tu 2 zdjęcia z logów stworzonych kont + nadanych administratorów WAZUH + LOGI Z NARZEDZI
+LINUX > sudo grep -Ei "adduser|useradd|usermod|groupadd|passwd|deluser|userdel|sudo" /var/log/auth.log | tail -n 60
+I confirmed the creation of a secondary account on the Ubuntu endpoint using /var/log/auth.log. At 2026-01-10 21:50:26, privileged user management was initiated via sudo (COMMAND=/usr/sbin/adduser ir_backdoor)
+<img width="1320" height="115" alt="LINUX - STWORZENIE KOONTA DOWOD" src="https://github.com/user-attachments/assets/eba8c2c4-80d4-42fd-8963-211197ea41cb" />
 
-6. Eradication: Remove Persistence and Close the Compromise
+
+7. Eradication: Remove Persistence and Close the Compromise
 After confirming detection capability and validating the monitoring pipeline, the response moved to eradication.
 
 Windows:

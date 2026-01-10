@@ -98,10 +98,3 @@ Wazuh value: correlation reduces noise and provides a clear incident narrative f
 
 
 
-9. RUNBOOK: Brute Force (SSH/RDP) With Successful Authentication (Wazuh)
-Trigger
-Wazuh brute force alert (Linux/Windows) AND confirmed successful authentication:
-Windows: 4624 after multiple 4625
-Linux: Accepted password after multiple Failed password
-
-

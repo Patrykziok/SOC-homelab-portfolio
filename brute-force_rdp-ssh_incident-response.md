@@ -1,7 +1,7 @@
 ## Table of Contents
 1. [Lab Infrastructure](#1-lab-infrastructure)
 2. [Attack Simulation](#2-attack-simulation-multi-protocol-brute-force)
-3. [Technical Evidence & Analysis](#3-analysis-and-technical-evidence)
+3. [Analysis and Technical Evidence]
 4. [Containment & Response](#4-containment-wazuh-driven-isolation)
 5. [Threat Hunting: Persistence Discovery](#5-investigation--threat-hunting-did-the-attacker-create-a-new-account)
 6. [Eradication & Recovery](#7-eradication-remove-persistence-and-close-the-compromise)

@@ -18,9 +18,9 @@ Windows Endpoint (Win 10 + Sysmon): A workstation providing deep visibility into
 # 2. Attack Simulation: Multi-Protocol Brute Force
 To test how well the SIEM detects real-world threats, I launched a dictionary-based brute force attack using Hydra from an Ubuntu machine. I targeted two common entry points - RDP on Windows and SSH on Linux.
 
-Attack Proof (Ubuntu Linux):
-Targets: I attempted to crack the Administrator (Windows) and soc (Linux) accounts.
-Outcome: The attack was successful, identifying the correct password (Qweqwe123) for both systems.
+Attack Proof (Ubuntu Linux):<br>
+Targets: I attempted to crack the Administrator (Windows) and soc (Linux) accounts.<br>
+Outcome: The attack was successful, identifying the correct password (Qweqwe123) for both systems.<br>
 
 Linux attack command -> hydra -vV -l soc -P passwords_linux.txt 192.168.101.11 ssh
 <img width="1291" height="501" alt="Hydra Atak - Linux" src="https://github.com/user-attachments/assets/731ea80c-6ad6-4c19-a129-f4253464e1a4" />

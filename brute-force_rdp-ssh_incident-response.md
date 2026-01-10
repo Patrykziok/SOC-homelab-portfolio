@@ -1,3 +1,12 @@
+## Table of Contents
+1. [Lab Infrastructure](#1-lab-infrastructure)
+2. [Attack Simulation](#2-attack-simulation-multi-protocol-brute-force)
+3. [Technical Evidence & Analysis](#3-analysis-and-technical-evidence)
+4. [Containment & Response](#4-containment-wazuh-driven-isolation)
+5. [Threat Hunting: Persistence Discovery](#5-investigation--threat-hunting-did-the-attacker-create-a-new-account)
+6. [Eradication & Recovery](#7-eradication-remove-persistence-and-close-the-compromise)
+7. [Incident Report Summary](#incident-report--brute-force-attack-hydra--ssh--rdp-wazuh)
+
 # Lab Infrastructure
 ## This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 

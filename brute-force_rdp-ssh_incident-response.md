@@ -10,9 +10,9 @@
 # Lab Infrastructure
 ## This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 
-Wazuh Manager: Hosted on an Ubuntu Server, acting as the central brain for log collection, correlation, and alerting. <br>
-Linux Endpoint: An Ubuntu Server running an Nginx web server, monitored by a Wazuh Agent for authentication and system logs.<br>
-Windows Endpoint: A Windows 10 workstation monitored by a Wazuh Agent and Sysmon, providing granular visibility into process creation and network connections.
+Wazuh Manager (SIEM): Central server responsible for log analysis, event correlation, and real-time alerting. <br>
+Linux Endpoint (Ubuntu + Nginx): A web server monitored for both system authentication (SSH) and web application logs. <br>
+Windows Endpoint (Win 10 + Sysmon): A workstation providing deep visibility into login events and system process activity. <br>
 
 
 2. Attack Simulation: Multi-Protocol Brute Force

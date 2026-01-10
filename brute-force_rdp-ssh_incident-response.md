@@ -36,3 +36,13 @@ I verified the attack on the Windows host using the Event Viewer.
 
 Logon Failures: Multiple Event ID 4625 entries confirmed the brute force attempt.
 Logon Success: A subsequent Event ID 4624 confirmed that the attacker successfully gained access.
+
+C. Linux Auth Logs (Endpoint Side)
+On the Ubuntu server, I examined the /var/log/auth.log file to trace the SSH attack.
+Command used > sudo journalctl -u ssh -n 50 --no-pager
+<img width="1287" height="815" alt="log auth Linux" src="https://github.com/user-attachments/assets/b44b70b9-4afb-46bd-837b-d873b0b1d553" />
+
+Evidence: The log shows hundreds of Failed password messages from the attacker's IP, followed by an Accepted password entry for the user soc.
+
+
+

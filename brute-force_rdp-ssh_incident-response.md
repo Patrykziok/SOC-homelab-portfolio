@@ -96,7 +96,7 @@ Persistence: Checking for "backdoors" (like new accounts) is mandatory after any
 
 
 
-## 9. INCIDENT REPORT – Brute Force Attack (Hydra) – SSH + RDP (Wazuh) <br>
+## 9. INCIDENT REPORT <br>
 ### Incident Overview <br>
 Incident name: Multi-Protocol Brute Force with Successful Authentication (SSH + RDP) <br>
 Severity: Critical (successful login confirmed) <br>

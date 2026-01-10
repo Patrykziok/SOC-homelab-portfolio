@@ -1,5 +1,5 @@
 ## Lab Infrastructure
-This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
+### This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 
 Wazuh Manager: Hosted on an Ubuntu Server, acting as the central brain for log collection, correlation, and alerting.
 Linux Endpoint: An Ubuntu Server running an Nginx web server, monitored by a Wazuh Agent for authentication and system logs.

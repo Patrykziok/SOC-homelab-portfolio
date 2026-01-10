@@ -7,9 +7,9 @@
 6. [Eradication & Recovery](#7-eradication-remove-persistence-and-close-the-compromise)
 7. [Incident Report Summary](#incident-report--brute-force-attack-hydra--ssh--rdp-wazuh)
 
-# Lab Infrastructure
-## This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
+# This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 
+## Lab Infrastructure
 Wazuh Manager (SIEM): Central server responsible for log analysis, event correlation, and real-time alerting. <br>
 Linux Endpoint (Ubuntu + Nginx): A web server monitored for both system authentication (SSH) and web application logs. <br>
 Windows Endpoint (Win 10 + Sysmon): A workstation providing deep visibility into login events and system process activity. <br>

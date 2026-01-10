@@ -7,7 +7,7 @@
 6. [Eradication](#6-eradication)
 7. [Recovery](#7-recovery)
 8. [Lessons Learned](#8-lessons-learned)
-9. [Incidient report](#9-incident-report)
+9. [Incidient Report](#9-incident-report)
 
 # This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 
@@ -98,7 +98,7 @@ Persistence: Checking for "backdoors" (like new accounts) is mandatory after any
 
 
 
-## 9. Incidient report <br>
+## 9. Incidient Report <br>
 ### Incident Overview <br>
 Incident name: Multi-Protocol Brute Force with Successful Authentication (SSH + RDP) <br>
 Severity: Critical (successful login confirmed) <br>

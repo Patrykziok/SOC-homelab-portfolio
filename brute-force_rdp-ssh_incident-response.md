@@ -30,25 +30,24 @@ Outcome: The attack was successful, identifying the correct password (Qweqwe123)
 
 # 3. Analysis and Technical Evidence <br>
 After the attack, I analyzed the telemetry from three different perspectives to confirm the breach.
-A. Wazuh SIEM Dashboard (Correlation)
-The manager successfully correlated the noise from the attack into high-priority alerts.
+### A. Wazuh SIEM Dashboard
 The SIEM captured the progression from failed attempts (Level 5) to an active brute force detection (Level 10) and finally to a critical alert (Level 12).
 
-WINDOWS: Wazuh used command for filter logs -> rule.id:(60122 OR 60204 OR 100001)
+### WINDOWS: Wazuh used command for filter logs -> rule.id:(60122 OR 60204 OR 100001)
 <img width="1917" height="641" alt="Hydra Windows Logi" src="https://github.com/user-attachments/assets/7c293b45-414c-4968-aaae-2db4c3664ab3" />
-LINUX -> Wazuh used command for filter logs -> rule.id:(5760 OR 2502 OR 40112)
+### LINUX -> Wazuh used command for filter logs -> rule.id:(5760 OR 2502 OR 40112)
 <img width="1909" height="503" alt="Hydra Linux Logi" src="https://github.com/user-attachments/assets/8ee61316-3d55-4217-af96-0db7778e6ff0" />
 
-B. Windows Event Logs (Endpoint Side)
+### B. Windows Event Logs - Endpoint Side
 I verified the attack on the Windows host using the Event Viewer.
 <img width="617" height="615" alt="Event log Windows 4624-4625" src="https://github.com/user-attachments/assets/394d2d4d-e1b4-4561-8c71-3e3c53b1d5de" />
 
-Logon Failures: Multiple Event ID 4625 entries confirmed the brute force attempt.
-Logon Success: A subsequent Event ID 4624 confirmed that the attacker successfully gained access.
+Logon Failures: Multiple Event ID 4625 entries confirmed the brute force attempt.<br>
+Logon Success: A subsequent Event ID 4624 confirmed that the attacker successfully gained access.<br>
 
-C. Linux Auth Logs (Endpoint Side)
-On the Ubuntu server, I examined the /var/log/auth.log file to trace the SSH attack.
-Command used > sudo journalctl -u ssh -n 50 --no-pager
+### C. Linux Auth Logs - Endpoint Side
+On the Ubuntu server, I examined the /var/log/auth.log file to trace the SSH attack.<br>
+Command used > sudo journalctl -u ssh -n 50 --no-pager<br>
 <img width="1287" height="815" alt="log auth Linux" src="https://github.com/user-attachments/assets/b44b70b9-4afb-46bd-837b-d873b0b1d553" />
 
 Evidence: The log shows hundreds of Failed password messages from the attacker's IP, followed by an Accepted password entry for the user soc.

@@ -58,3 +58,40 @@ The affected accounts (Administrator, soc) were temporarily restricted (disable/
 5. Investigation & Threat Hunting: Did the Attacker Create a New Account?
 After containment, I performed a targeted investigation to determine whether the attacker established persistence — specifically, whether a secondary account was created (a common post-compromise step).
 
+Tu 2 zdjęcia z logów stworzonych kont + nadanych administratorów WAZUH + LOGI Z NARZEDZI
+
+6. Eradication: Remove Persistence and Close the Compromise
+After confirming detection capability and validating the monitoring pipeline, the response moved to eradication.
+
+Windows:
+Removed the simulated persistence account (temp_svc).
+Verified removal by confirming absence of the user and searching for relevant Security events:
+4726 (user account deleted) may appear depending on auditing configuration.
+ZDJECIE Z DOWODU USUNIECIA LOG
+
+Linux:
+Removed the simulated user (backup_ops) and cleaned any related artifacts:
+home directory, ssh keys, cron jobs if any were created.
+ZDJECIE Z USUNIECIA LOG
+RECOMMENDATION
+
+7. Recovery: Return Services to Normal Operation
+After eradication, systems were returned to normal operations in a controlled manner.
+
+
+8. Lessons Learned (SOC-Style)
+Severity escalation rule: brute force becomes Critical once a success login occurs (Valid Accounts).
+Containment must be immediate: IP-based blocking in Wazuh Active Response is effective to stop the attack quickly.
+Persistence checks are mandatory: account creation, group membership changes, SSH key additions, and scheduled tasks must be part of every post-brute-force investigation.
+Passwords are the weakest link: adopting SSH keys and lockout policies drastically reduces brute force feasibility.
+Wazuh value: correlation reduces noise and provides a clear incident narrative from failed attempts → detection → compromise → response.
+
+
+
+9. RUNBOOK: Brute Force (SSH/RDP) With Successful Authentication (Wazuh)
+Trigger
+Wazuh brute force alert (Linux/Windows) AND confirmed successful authentication:
+Windows: 4624 after multiple 4625
+Linux: Accepted password after multiple Failed password
+
+

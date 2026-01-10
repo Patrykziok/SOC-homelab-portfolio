@@ -98,7 +98,7 @@ Persistence: Checking for "backdoors" (like new accounts) is mandatory after any
 
 
 
-## 9. INCIDENT REPORT <br>
+## 9. Incidient report <br>
 ### Incident Overview <br>
 Incident name: Multi-Protocol Brute Force with Successful Authentication (SSH + RDP) <br>
 Severity: Critical (successful login confirmed) <br>

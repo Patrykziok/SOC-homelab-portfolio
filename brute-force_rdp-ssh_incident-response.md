@@ -54,7 +54,7 @@ Evidence: The logs show a series of failed login attempts, followed by a success
 
 ## 4. Containment: Wazuh-Driven Isolation
 After confirming a successful authentication on both endpoints (Windows 4624 after 4625, Linux Accepted password after Failed password), the incident response process moved from detection to containment. The primary objective was to immediately prevent repeated access attempts and stop any potential post-compromise actions.<br>
-4.1 Isolation Actions in Wazuh (Active Response)<br>
+### 4.1 Isolation Actions in Wazuh (Active Response)<br>
 To isolate the affected endpoints from the attacker, I executed a Wazuh-based containment action by applying an Active Response / host-level block for the attacker’s source IP - 192.168.101.10<br>
 <img width="933" height="882" alt="Windows sucessfull login details" src="https://github.com/user-attachments/assets/9398c2e6-683f-4c57-a071-1ae70c4e743e" />
 
@@ -63,7 +63,7 @@ Because brute force resulted in valid credentials, the incident was treated as C
 The affected accounts (Administrator, soc) were temporarily restricted (disable/lock) until the investigation phase completed.
 
 
-5. Investigation & Threat Hunting: Did the Attacker Create a New Account?
+## 5. Investigation & Threat Hunting: Did the Attacker Create a New Account?
 After containment, I performed a targeted investigation to determine whether the attacker established persistence — specifically, whether a secondary account was created (a common post-compromise step).
 Windows persistence evidence: Windows Security auditing recorded Event ID 4720 (User Account Management) at 2026-01-10 22:26:35, confirming creation of a new local user account ir_backdoor on host WIN-VVRDFQU4TPN. The action was performed under the Administrator context.
 <img width="1019" height="771" alt="Windows konto zrobione log" src="https://github.com/user-attachments/assets/7031676c-fe9d-4b98-babb-4fe4a9fc5207" />
@@ -73,7 +73,7 @@ I confirmed the creation of a secondary account on the Ubuntu endpoint using /va
 <img width="1320" height="115" alt="LINUX - STWORZENIE KOONTA DOWOD" src="https://github.com/user-attachments/assets/eba8c2c4-80d4-42fd-8963-211197ea41cb" />
 
 
-7. Eradication: Remove Persistence and Close the Compromise
+## 6. Eradication: Remove Persistence and Close the Compromise
 After confirming detection capability and validating the monitoring pipeline, the response moved to eradication.
 
 Windows:
@@ -93,7 +93,7 @@ home directory, ssh keys, cron jobs if any were created.
 
 RECOMMENDATION
 
-7. Recovery: Return Services to Normal Operation
+## 7. Recovery: Return Services to Normal Operation
 After eradication, systems were returned to normal operations in a controlled manner.
 
 

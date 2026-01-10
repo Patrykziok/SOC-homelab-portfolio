@@ -28,7 +28,7 @@ Outcome: The attack was successful, identifying the correct password (Qweqwe123)
 ### Windows attack command ->  hydra -vV -l Administrator -P passwords_windows.txt 192.168.101.20 rdp 
 <img width="1299" height="497" alt="Hydra Atak - Windows" src="https://github.com/user-attachments/assets/ff1028f2-80ed-41f7-acb5-7e1622e43a4a" />
 
-3. Analysis and Technical Evidence
+# 3. Analysis and Technical Evidence <br>
 After the attack, I analyzed the telemetry from three different perspectives to confirm the breach.
 A. Wazuh SIEM Dashboard (Correlation)
 The manager successfully correlated the noise from the attack into high-priority alerts.

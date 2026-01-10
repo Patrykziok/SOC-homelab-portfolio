@@ -88,27 +88,25 @@ User Removal: I deleted the simulated backdoor account and purged its associated
 After eradication, systems were returned to normal operations in a controlled manner.
 
 
-8. Lessons Learned (SOC-Style)
-Severity escalation rule: brute force becomes Critical once a success login occurs (Valid Accounts).
-Containment must be immediate: IP-based blocking in Wazuh Active Response is effective to stop the attack quickly.
-Persistence checks are mandatory: account creation, group membership changes, SSH key additions, and scheduled tasks must be part of every post-brute-force investigation.
-Passwords are the weakest link: adopting SSH keys and lockout policies drastically reduces brute force feasibility.
-Wazuh value: correlation reduces noise and provides a clear incident narrative from failed attempts → detection → compromise → response.
+## 8. Lessons Learned 
+Visibility: Monitoring is essential to understand how a breach occurred. <br>
+Speed: Automated blocking is the most effective way to limit the damage. <br>
+Priority: A successful login during a brute-force attack must be treated as a Critical alert. <br>
+Persistence: Checking for "backdoors" (like new accounts) is mandatory after any successful breach. <br>
 
 
 
-
-INCIDENT REPORT – Brute Force Attack (Hydra) – SSH + RDP (Wazuh)
-1. Incident Overview
-Incident name: Multi-Protocol Brute Force with Successful Authentication (SSH + RDP)
-Severity: Critical (successful login confirmed)
-Detection platform: Wazuh SIEM/XDR (agents + correlation)
-Date: 2026-01-10
-Impacted assets:
-Windows endpoint: WIN-VVRDFQU4TPN (agent.ip: 192.168.101.20)
-Linux endpoint: wazuh-agent-1 (192.168.101.11, SSH/Nginx)
-Attacker IOC (source IP): 192.168.101.10 (confirmed via Wazuh field data.win.eventdata.ipAddress)
-Compromised accounts: Administrator (Windows), soc (Linux)
-Initial access method: Dictionary brute force via Hydra
-Status: Contained → Eradicated → Recovered → Closed
+## 9. INCIDENT REPORT – Brute Force Attack (Hydra) – SSH + RDP (Wazuh) <br>
+1. Incident Overview <br>
+Incident name: Multi-Protocol Brute Force with Successful Authentication (SSH + RDP) <br>
+Severity: Critical (successful login confirmed) <br>
+Detection platform: Wazuh SIEM/XDR (agents + correlation) <br>
+Date: 2026-01-10 <br>
+Impacted assets: <br>
+Windows endpoint: WIN-VVRDFQU4TPN (agent.ip: 192.168.101.20) <br>
+Linux endpoint: wazuh-agent-1 (192.168.101.11, SSH/Nginx) <br>
+Attacker IOC (source IP): 192.168.101.10 (confirmed via Wazuh field data.win.eventdata.ipAddress) <br>
+Compromised accounts: Administrator (Windows), soc (Linux) <br>
+Initial access method: Dictionary brute force via Hydra <br> 
+Status: Contained → Eradicated → Recovered → Closed <br>
 

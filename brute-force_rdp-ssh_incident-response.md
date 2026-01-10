@@ -7,7 +7,7 @@
 6. [Eradication](#6-eradication)
 7. [Recovery](#7-recovery)
 8. [Lessons Learned](#8-lessons-learned)
-9. [INCIDENT REPORT](#9-incident-report)
+9. [Incidient report](#9-incident-report)
 
 # This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 

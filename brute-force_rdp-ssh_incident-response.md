@@ -44,5 +44,17 @@ Command used > sudo journalctl -u ssh -n 50 --no-pager
 
 Evidence: The log shows hundreds of Failed password messages from the attacker's IP, followed by an Accepted password entry for the user soc.
 
+4. Containment: Wazuh-Driven Isolation
+After confirming a successful authentication on both endpoints (Windows 4624 after 4625, Linux Accepted password after Failed password), the incident response process moved from detection to containment. The primary objective was to immediately prevent repeated access attempts and stop any potential post-compromise actions.
+4.1 Isolation Actions in Wazuh (Active Response)
+To isolate the affected endpoints from the attacker, I executed a Wazuh-based containment action by applying an Active Response / host-level block for the attacker’s source IP - 192.168.101.10
+<img width="933" height="882" alt="Windows sucessfull login details" src="https://github.com/user-attachments/assets/9398c2e6-683f-4c57-a071-1ae70c4e743e" />
 
+Access Control Safeguard (Temporary Account Lockdown)
+Because brute force resulted in valid credentials, the incident was treated as Credential Compromise.
+The affected accounts (Administrator, soc) were temporarily restricted (disable/lock) until the investigation phase completed.
+
+
+5. Investigation & Threat Hunting: Did the Attacker Create a New Account?
+After containment, I performed a targeted investigation to determine whether the attacker established persistence — specifically, whether a secondary account was created (a common post-compromise step).
 

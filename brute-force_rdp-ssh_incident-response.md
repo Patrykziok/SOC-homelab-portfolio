@@ -30,3 +30,8 @@ WINDOWS: Wazuh used command for filter logs -> rule.id:(60122 OR 60204 OR 100001
 LINUX -> Wazuh used command for filter logs -> rule.id:(5760 OR 2502 OR 40112)
 <img width="1909" height="503" alt="Hydra Linux Logi" src="https://github.com/user-attachments/assets/8ee61316-3d55-4217-af96-0db7778e6ff0" />
 
+B. Windows Event Logs (Endpoint Side)
+I verified the attack on the Windows host using the Event Viewer.
+<img width="617" height="615" alt="Event log Windows 4624-4625" src="https://github.com/user-attachments/assets/394d2d4d-e1b4-4561-8c71-3e3c53b1d5de" />
+Logon Failures: Multiple Event ID 4625 entries confirmed the brute force attempt.
+Logon Success: A subsequent Event ID 4624 confirmed that the attacker successfully gained access.

@@ -33,5 +33,6 @@ LINUX -> Wazuh used command for filter logs -> rule.id:(5760 OR 2502 OR 40112)
 B. Windows Event Logs (Endpoint Side)
 I verified the attack on the Windows host using the Event Viewer.
 <img width="617" height="615" alt="Event log Windows 4624-4625" src="https://github.com/user-attachments/assets/394d2d4d-e1b4-4561-8c71-3e3c53b1d5de" />
+
 Logon Failures: Multiple Event ID 4625 entries confirmed the brute force attempt.
 Logon Success: A subsequent Event ID 4624 confirmed that the attacker successfully gained access.

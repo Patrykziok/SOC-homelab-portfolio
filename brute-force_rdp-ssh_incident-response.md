@@ -12,3 +12,6 @@ To test the detection capabilities of the SIEM, I performed a dictionary-based b
 Attack Proof (Ubuntu Linux):
 Targeting: Attempting to crack the Administrator account on Windows and the soc account on Linux.
 Outcome: The attack was successful, identifying the correct password (Qweqwe123) for both systems.
+
+Linux attack command -> hydra -vV -l soc -P passwords_linux.txt 192.168.101.11 ssh
+<img width="1291" height="501" alt="Hydra Atak - Linux" src="https://github.com/user-attachments/assets/731ea80c-6ad6-4c19-a129-f4253464e1a4" />

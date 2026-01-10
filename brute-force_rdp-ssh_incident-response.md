@@ -61,12 +61,11 @@ To isolate the affected endpoints from the attacker, I executed a Wazuh-based co
 Since the attacker cracked the passwords, I treated this as a Credential Compromise. I immediately locked the 'Administrator' and 'soc' accounts to stay safe while I finished the investigation. <br>
 
 ## 5. Investigation & Threat Hunting: Did the Attacker Create a New Account?
-After containment, I performed a targeted investigation to determine whether the attacker established persistence — specifically, whether a secondary account was created (a common post-compromise step).
-Windows persistence evidence: Windows Security auditing recorded Event ID 4720 (User Account Management) at 2026-01-10 22:26:35, confirming creation of a new local user account ir_backdoor on host WIN-VVRDFQU4TPN. The action was performed under the Administrator context.
+After containing the threat, I checked if the attacker tried to maintain access by creating a new account, which is a common tactic after a breach. My investigation found the following evidence on Windows: Windows Security auditing recorded Event ID 4720 (User Account Management) at 2026-01-10 22:26:35, confirming creation of a new local user account ir_backdoor on host WIN-VVRDFQU4TPN. The action was performed under the Administrator context <br>
 <img width="1019" height="771" alt="Windows konto zrobione log" src="https://github.com/user-attachments/assets/7031676c-fe9d-4b98-babb-4fe4a9fc5207" />
 
-LINUX > sudo grep -Ei "adduser|useradd|usermod|groupadd|passwd|deluser|userdel|sudo" /var/log/auth.log | tail -n 60
-I confirmed the creation of a secondary account on the Ubuntu endpoint using /var/log/auth.log. At 2026-01-10 21:50:26, privileged user management was initiated via sudo (COMMAND=/usr/sbin/adduser ir_backdoor)
+### LINUX > sudo grep -Ei "adduser|useradd|usermod|groupadd|passwd|deluser|userdel|sudo" /var/log/auth.log | tail -n 60 <br>
+I confirmed the creation of a secondary account on the Ubuntu endpoint using /var/log/auth.log. At 2026-01-10 21:50:26, privileged user management was initiated via sudo (COMMAND=/usr/sbin/adduser ir_backdoor) <br>
 <img width="1320" height="115" alt="LINUX - STWORZENIE KOONTA DOWOD" src="https://github.com/user-attachments/assets/eba8c2c4-80d4-42fd-8963-211197ea41cb" />
 
 

@@ -18,3 +18,14 @@ Linux attack command -> hydra -vV -l soc -P passwords_linux.txt 192.168.101.11 s
 
 Windows attack command -> hydra -vV -l Administrator -P passwords_windows.txt 192.168.101.20 rdp
 <img width="1299" height="497" alt="Hydra Atak - Windows" src="https://github.com/user-attachments/assets/ff1028f2-80ed-41f7-acb5-7e1622e43a4a" />
+
+3. Analysis and Technical Evidence
+After the attack, I analyzed the telemetry from three different perspectives to confirm the breach.
+A. Wazuh SIEM Dashboard (Correlation)
+The manager successfully correlated the noise from the attack into high-priority alerts.
+The SIEM captured the progression from failed attempts (Level 5) to an active brute force detection (Level 10) and finally to a critical alert (Level 12).
+WINDOWS:
+<img width="1917" height="641" alt="Hydra Windows Logi" src="https://github.com/user-attachments/assets/7c293b45-414c-4968-aaae-2db4c3664ab3" />
+LINUX:
+<img width="1909" height="503" alt="Hydra Linux Logi" src="https://github.com/user-attachments/assets/8ee61316-3d55-4217-af96-0db7778e6ff0" />
+

@@ -72,14 +72,14 @@ I confirmed that a new local user account ir_backdoor was created on the Ubuntu 
 ## 6. Eradication: Remove Persistence and Close the Compromise
 Once I confirmed detection capabilities and validated the monitoring pipeline, I proceeded with eradication. <br>
 
-Windows:<br>
+### Windows:<br>
 Persistence Removal: I deleted the simulated backdoor account using: net user ir_backdoor /delete.<br>
 Verification: I confirmed the account's removal and audited the Security logs for Event ID 4726 (User account deleted) to ensure the action was properly recorded.<br>
 <img width="1004" height="712" alt="Windows dowod usuniecia konta" src="https://github.com/user-attachments/assets/591ae7b5-638a-401c-b4d5-787fc999241f" />
 <img width="1299" height="115" alt="LINUX - USUNIECIE KONTA DOWOD" src="https://github.com/user-attachments/assets/36df5331-1f9f-4c67-a4eb-fbab9fca9465" />
 
 
-Linux:<br>
+### Linux:<br>
 User Removal: I deleted the simulated backdoor account and purged its associated data: sudo deluser --remove-home ir_backdoor<br>
 <img width="1299" height="115" alt="LINUX - USUNIECIE KONTA DOWOD" src="https://github.com/user-attachments/assets/ad9279b6-897b-4b4c-b50f-0f032cce35e5" />
 

@@ -1,4 +1,4 @@
-#H1 Lab Infrastructure
+#H Lab Infrastructure
 This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 
 Wazuh Manager: Hosted on an Ubuntu Server, acting as the central brain for log collection, correlation, and alerting.

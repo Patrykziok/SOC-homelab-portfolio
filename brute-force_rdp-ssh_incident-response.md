@@ -15,11 +15,11 @@ Linux Endpoint (Ubuntu + Nginx): A web server monitored for both system authenti
 Windows Endpoint (Win 10 + Sysmon): A workstation providing deep visibility into login events and system process activity. <br>
 
 
-2. Attack Simulation: Multi-Protocol Brute Force
-To test the detection capabilities of the SIEM, I performed a dictionary-based brute force attack against both protocols: RDP (Windows) and SSH (Linux) using Hydra on a Ubuntu Linux machine.
+# 2. Attack Simulation: Multi-Protocol Brute Force
+To test how well the SIEM detects real-world threats, I launched a dictionary-based brute force attack using Hydra from an Ubuntu machine. I targeted two common entry points - RDP on Windows and SSH on Linux.
 
 Attack Proof (Ubuntu Linux):
-Targeting: Attempting to crack the Administrator account on Windows and the soc account on Linux.
+Targets: I attempted to crack the Administrator (Windows) and soc (Linux) accounts.
 Outcome: The attack was successful, identifying the correct password (Qweqwe123) for both systems.
 
 Linux attack command -> hydra -vV -l soc -P passwords_linux.txt 192.168.101.11 ssh

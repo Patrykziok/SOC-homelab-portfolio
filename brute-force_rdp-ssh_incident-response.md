@@ -15,7 +15,7 @@
 Wazuh Manager (192.168.101.5): Central server for log analysis, event correlation, and real-time alerting. <br>
 Linux Endpoint (192.168.101.11): Ubuntu + Nginx with Wazuh Agent. <br>
 Windows Endpoint (192.168.101.20): Win 10 + Sysmon with Wazuh Agent. <br>
-Attacker Machine (192.168.101.10): Ubuntu Linux used for Hydra brute force simulations. (SSH & RDP).
+Attacker Machine (192.168.101.10): Ubuntu Linux used for Hydra brute force simulations.
 
 <a name="sekcja-2"></a>
 ## 2. Attack Simulation: Multi-Protocol Brute Force

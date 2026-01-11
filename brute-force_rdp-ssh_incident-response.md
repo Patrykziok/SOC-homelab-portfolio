@@ -1,17 +1,17 @@
 ## Table of Contents
 1. [Lab Infrastructure](#1-lab-infrastructure)
-2. [Attack Simulation](#2-attack-simulation)
+2. [Attack Simulation: Multi-Protocol Brute Force](#2-attack-simulation-multi-protocol-brute-force)
 3. [Analysis and Technical Evidence](#3-analysis-and-technical-evidence)
 4. [Containment: Wazuh-Driven Isolation](#4-containment-wazuh-driven-isolation)
 5. [Investigation & Threat Hunting](#5-investigation--threat-hunting)
-6. [Eradication](#6-eradication)
-7. [Recovery](#7-recovery)
+6. [Eradication: Remove Persistence and Close the Compromise](#6-eradication-remove-persistence-and-close-the-compromise)
+7. [Recovery: Return Services to Normal Operation](#7-recovery-return-services-to-normal-operation)
 8. [Lessons Learned](#8-lessons-learned)
-9. [Incidient Report](#9-incident-report)
+9. [Incident Report](#9-incident-report)
 
 # This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
 
-## 1. Lab Infrastructure:
+## 1. Lab Infrastructure
 Wazuh Manager (SIEM): Central server responsible for log analysis, event correlation, and real-time alerting. <br>
 Linux Endpoint (Ubuntu + Nginx): A web server monitored for both system authentication (SSH) and web application logs. <br>
 Windows Endpoint (Win 10 + Sysmon): A workstation providing deep visibility into login events and system process activity. <br>
@@ -62,7 +62,7 @@ To isolate the affected endpoints from the attacker, I executed a Wazuh-based co
 
 Since the attacker cracked the passwords, I treated this as a Credential Compromise. I immediately locked the 'Administrator' and 'soc' accounts to stay safe while I finished the investigation. <br>
 
-## 5. Investigation & Threat Hunting: Did the Attacker Create a New Account?
+## 5. Investigation & Threat Hunting
 After containing the threat, I checked if the attacker tried to maintain access by creating a new account, which is a common tactic after a breach. My investigation found the following evidence on Windows: Windows Security auditing recorded Event ID 4720 (User Account Management) at 2026-01-10 22:26:35, confirming creation of a new local user account ir_backdoor on host WIN-VVRDFQU4TPN. The action was performed under the Administrator context <br>
 <img width="1019" height="771" alt="Windows konto zrobione log" src="https://github.com/user-attachments/assets/7031676c-fe9d-4b98-babb-4fe4a9fc5207" />
 

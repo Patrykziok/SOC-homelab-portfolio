@@ -1,22 +1,22 @@
 ## Table of Contents
-1. [Lab Infrastructure](#1-lab-infrastructure)
-2. [Attack Simulation: Multi-Protocol Brute Force](#2-attack-simulation-multi-protocol-brute-force)
-3. [Analysis and Technical Evidence](#3-analysis-and-technical-evidence)
-4. [Containment: Wazuh-Driven Isolation](#4-containment-wazuh-driven-isolation)
-5. [Investigation & Threat Hunting](#5-investigation--threat-hunting)
-6. [Eradication: Remove Persistence and Close the Compromise](#6-eradication-remove-persistence-and-close-the-compromise)
-7. [Recovery: Return Services to Normal Operation](#7-recovery-return-services-to-normal-operation)
-8. [Lessons Learned](#8-lessons-learned)
-9. [Incident Report](#9-incident-report)
+1. [Lab Infrastructure](#sekcja-1)
+2. [Attack Simulation: Multi-Protocol Brute Force](#sekcja-2)
+3. [Analysis and Technical Evidence](#sekcja-3)
+4. [Containment: Wazuh-Driven Isolation](#sekcja-4)
+5. [Investigation & Threat Hunting](#sekcja-5)
+6. [Eradication: Remove Persistence and Close the Compromise](#sekcja-6)
+7. [Recovery: Return Services to Normal Operation](#sekcja-7)
+8. [Lessons Learned](#sekcja-8)
+9. [Incident Report](#sekcja-9)
 
 # This lab environment was designed to monitor and secure a hybrid infrastructure consisting of both Windows and Linux endpoints.
-
+<a name="sekcja-1"></a>
 ## 1. Lab Infrastructure
 Wazuh Manager (SIEM): Central server responsible for log analysis, event correlation, and real-time alerting. <br>
 Linux Endpoint (Ubuntu + Nginx): A web server monitored for both system authentication (SSH) and web application logs. <br>
 Windows Endpoint (Win 10 + Sysmon): A workstation providing deep visibility into login events and system process activity. <br>
 
-
+<a name="sekcja-2"></a>
 ## 2. Attack Simulation: Multi-Protocol Brute Force
 To test how well the SIEM detects real-world threats, I launched a dictionary-based brute force attack using Hydra from an Ubuntu machine. I targeted two common entry points - RDP on Windows and SSH on Linux.
 
@@ -29,7 +29,7 @@ Outcome: The attack was successful, identifying the correct password (Qweqwe123)
 
 ### Windows attack command ->  hydra -vV -l Administrator -P passwords_windows.txt 192.168.101.20 rdp 
 <img width="1299" height="497" alt="Hydra Atak - Windows" src="https://github.com/user-attachments/assets/ff1028f2-80ed-41f7-acb5-7e1622e43a4a" />
-
+<a name="sekcja-3"></a>
 ## 3. Analysis and Technical Evidence <br>
 After the attack, I analyzed the telemetry from three different perspectives to confirm the breach.
 ## A. Wazuh SIEM Dashboard
@@ -53,7 +53,7 @@ Command used > sudo journalctl -u ssh -n 50 --no-pager<br>
 <img width="1287" height="815" alt="log auth Linux" src="https://github.com/user-attachments/assets/b44b70b9-4afb-46bd-837b-d873b0b1d553" />
 
 Evidence: The logs show a series of failed login attempts, followed by a successful login for the user 'soc
-
+<a name="sekcja-4"></a>
 ## 4. Containment: Wazuh-Driven Isolation
 Once I confirmed the successful logins on both systems, I moved from detection to containment. My main goal was to block the attacker immediately and prevent any further damage. <br>
 ## 4.1 Isolation Actions in Wazuh (Active Response)<br>
@@ -61,7 +61,7 @@ To isolate the affected endpoints from the attacker, I executed a Wazuh-based co
 <img width="933" height="882" alt="Windows sucessfull login details" src="https://github.com/user-attachments/assets/9398c2e6-683f-4c57-a071-1ae70c4e743e" />
 
 Since the attacker cracked the passwords, I treated this as a Credential Compromise. I immediately locked the 'Administrator' and 'soc' accounts to stay safe while I finished the investigation. <br>
-
+<a name="sekcja-5"></a>
 ## 5. Investigation & Threat Hunting
 After containing the threat, I checked if the attacker tried to maintain access by creating a new account, which is a common tactic after a breach. My investigation found the following evidence on Windows: Windows Security auditing recorded Event ID 4720 (User Account Management) at 2026-01-10 22:26:35, confirming creation of a new local user account ir_backdoor on host WIN-VVRDFQU4TPN. The action was performed under the Administrator context <br>
 <img width="1019" height="771" alt="Windows konto zrobione log" src="https://github.com/user-attachments/assets/7031676c-fe9d-4b98-babb-4fe4a9fc5207" />
@@ -70,7 +70,7 @@ After containing the threat, I checked if the attacker tried to maintain access 
 I confirmed that a new local user account ir_backdoor was created on the Ubuntu endpoint via sudo adduser. Evidence: /var/log/auth.log shows COMMAND=/usr/sbin/adduser ir_backdoor at 2026-01-10 21:50:26. <br>
 <img width="1320" height="115" alt="LINUX - STWORZENIE KOONTA DOWOD" src="https://github.com/user-attachments/assets/eba8c2c4-80d4-42fd-8963-211197ea41cb" />
 
-
+<a name="sekcja-6"></a>
 ## 6. Eradication: Remove Persistence and Close the Compromise
 Once I confirmed detection capabilities and validated the monitoring pipeline, I proceeded with eradication. <br>
 
@@ -85,11 +85,11 @@ Verification: I confirmed the account's removal and audited the Security logs fo
 User Removal: I deleted the simulated backdoor account and purged its associated data: sudo deluser --remove-home ir_backdoor<br>
 <img width="1299" height="115" alt="LINUX - USUNIECIE KONTA DOWOD" src="https://github.com/user-attachments/assets/ad9279b6-897b-4b4c-b50f-0f032cce35e5" />
 
-
+<a name="sekcja-7"></a>
 ## 7. Recovery: Return Services to Normal Operation
 After eradication, systems were returned to normal operations in a controlled manner.
 
-
+<a name="sekcja-8"></a>
 ## 8. Lessons Learned 
 Visibility: Monitoring is essential to understand how a breach occurred. <br>
 Speed: Automated blocking is the most effective way to limit the damage. <br>
@@ -97,7 +97,7 @@ Priority: A successful login during a brute-force attack must be treated as a Cr
 Persistence: Checking for "backdoors" (like new accounts) is mandatory after any successful breach. <br>
 
 
-
+<a name="sekcja-9"></a>
 ## 9. Incidient Report <br>
 ### Incident Overview <br>
 Incident name: Multi-Protocol Brute Force with Successful Authentication (SSH + RDP) <br>
